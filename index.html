@@ -1,154 +1,700 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مطعم زعفران | تجربة عشاء فاخرة</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Azafran Café Restaurant — سلا</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Cairo:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--gold:#C9A84C;--gold-light:#E8C97A;--gold-dim:#8A6B2A;--dark:#0E0C09;--dark-2:#1A1612;--dark-3:#251F18;--dark-4:#2F2820;--cream:#F5EDD8;--cream-dim:#C8B98A;--white:#FDFAF3;--green:#2D4A2D;--green-light:#4A7A4A;--transition:0.35s cubic-bezier(0.4,0,0.2,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--cream);font-family:'Cairo',sans-serif;overflow-x:hidden;line-height:1.7}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--dark-2)}::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;transition:background var(--transition)}
+nav.scrolled{background:rgba(14,12,9,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15)}
+.nav-logo{display:flex;flex-direction:column;align-items:center}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);letter-spacing:.1em;font-style:italic}
+.nav-logo-sub{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream-dim);margin-top:2px}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cream-dim);transition:color var(--transition);position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform var(--transition)}
+.nav-links a:hover{color:var(--gold)}.nav-links a:hover::after{transform:scaleX(1)}
+.lang-switcher{display:flex;gap:.3rem}
+.lang-btn{font-size:.68rem;letter-spacing:.08em;padding:.28rem .55rem;border:1px solid rgba(201,168,76,.3);color:var(--cream-dim);transition:all var(--transition);border-radius:2px}
+.lang-btn:hover,.lang-btn.active{background:var(--gold);color:var(--dark);border-color:var(--gold)}
+.nav-res-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;padding:.45rem 1.1rem;transition:all var(--transition)}
+.nav-res-btn:hover{background:var(--gold);color:var(--dark)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--gold)}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--dark);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2.2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:1.3rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim)}
+.mobile-menu a:hover{color:var(--gold)}
+
+/* HERO */
+#hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://lh3.googleusercontent.com/p/AF1QipOyPFnSMISmXe1-QdFPwN9-9ADsOhVjK0kU0Hk=s1360-w1360-h1020') center/cover no-repeat;filter:brightness(.38)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,12,9,.25) 0%,rgba(14,12,9,.55) 60%,var(--dark) 100%)}
+.hero-content{position:relative;text-align:center;padding:2rem;max-width:860px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:1rem;margin-bottom:1.8rem}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;width:36px;height:1px;background:var(--gold)}
+.hero-badge{font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.display{font-family:'Amiri',serif;font-size:clamp(3rem,8vw,6rem);font-weight:700;line-height:1.05;letter-spacing:.02em}
+html[lang="fr"] .display,html[lang="es"] .display,html[lang="en"] .display{font-family:'Playfair Display',serif}
+.hero-title{color:var(--white);margin-bottom:1.3rem;text-shadow:0 4px 24px rgba(0,0,0,.5)}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2.2vw,1.35rem);color:var(--cream-dim);font-style:italic;margin-bottom:2.8rem;font-weight:300}
+.hero-ctas{display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--dark);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;padding:.9rem 2.3rem;font-weight:700;transition:all var(--transition);display:inline-block}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,.3)}
+.btn-outline{background:transparent;color:var(--cream);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;padding:.9rem 2.3rem;border:1px solid rgba(255,255,255,.3);transition:all var(--transition);display:inline-block}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--gold-dim)}
+.hero-scroll span{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase}
+.hero-scroll svg{animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* SECTIONS */
+section{padding:6.5rem 2rem}
+.container{max-width:1160px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:4.5rem}
+.section-eyebrow{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);color:var(--cream);margin:.7rem 0}
+html[lang="ar"] .section-title{font-family:'Amiri',serif}
+.section-divider{display:flex;align-items:center;justify-content:center;gap:.9rem;margin-top:1rem}
+.section-divider::before,.section-divider::after{content:'';display:block;width:55px;height:1px;background:linear-gradient(to right,transparent,var(--gold))}
+.section-divider::after{background:linear-gradient(to left,transparent,var(--gold))}
+.divider-diamond{width:7px;height:7px;background:var(--gold);transform:rotate(45deg)}
+.fade-in{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* FEATURES */
+#features{background:var(--dark-2)}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:rgba(201,168,76,.08)}
+.feature-card{background:var(--dark-2);padding:2.8rem 1.8rem;text-align:center;transition:background var(--transition)}
+.feature-card:hover{background:var(--dark-3)}
+.feature-icon{font-size:2.2rem;margin-bottom:1rem;display:block}
+.feature-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold);margin-bottom:.6rem}
+html[lang="ar"] .feature-title{font-family:'Amiri',serif}
+.feature-desc{font-size:.8rem;color:var(--cream-dim);line-height:1.8}
+
+/* ABOUT */
+#about{background:var(--dark)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center}
+.about-images{position:relative;height:520px}
+.about-img-main{position:absolute;top:0;left:0;width:86%;height:86%;object-fit:cover;border:1px solid rgba(201,168,76,.18)}
+.about-img-accent{position:absolute;bottom:0;right:0;width:52%;height:52%;object-fit:cover;border:3px solid var(--dark);outline:1px solid rgba(201,168,76,.28)}
+.about-badge{display:inline-block;background:var(--gold);color:var(--dark);font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;padding:.35rem .9rem;font-weight:700;margin-bottom:1.4rem}
+.about-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.8vw,2.3rem);color:var(--cream);margin-bottom:1.3rem;line-height:1.3}
+html[lang="ar"] .about-text h2{font-family:'Amiri',serif}
+.about-text p{color:var(--cream-dim);font-size:.88rem;line-height:1.95;margin-bottom:1.1rem}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.2rem;padding-top:2.2rem;border-top:1px solid rgba(201,168,76,.12)}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);font-weight:700;display:block;line-height:1}
+.stat-label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim);margin-top:.35rem;display:block}
+
+/* MENU */
+#menu{background:var(--dark-2)}
+.menu-cats{display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.8rem}
+.cat-btn{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.55rem 1.3rem;border:1px solid rgba(201,168,76,.2);color:var(--cream-dim);transition:all var(--transition)}
+.cat-btn:hover,.cat-btn.active{background:var(--gold);color:var(--dark);border-color:var(--gold)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1px;background:rgba(201,168,76,.07)}
+.menu-item{background:var(--dark-2);padding:1.6rem 1.8rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;transition:background var(--transition)}
+.menu-item:hover{background:var(--dark-3)}
+.menu-item-name{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--cream);margin-bottom:.35rem}
+html[lang="ar"] .menu-item-name{font-family:'Amiri',serif}
+.menu-item-desc{font-size:.76rem;color:var(--cream-dim);line-height:1.7}
+.menu-item-price{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--gold);white-space:nowrap;font-weight:700}
+.menu-badge{font-size:.58rem;letter-spacing:.08em;background:var(--green);color:#90C090;padding:.18rem .45rem;border-radius:2px;text-transform:uppercase;display:inline-block;margin-top:.35rem}
+
+/* GALLERY */
+#gallery{background:var(--dark)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:3px}
+.gallery-item{overflow:hidden;cursor:pointer;position:relative}
+.gallery-item:first-child{grid-column:1/3;grid-row:1/3}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;filter:brightness(.82)}
+.gallery-item:hover img{transform:scale(1.05);filter:brightness(1)}
+.gal-overlay{position:absolute;inset:0;background:rgba(201,168,76,.12);opacity:0;transition:opacity var(--transition);display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--white)}
+.gallery-item:hover .gal-overlay{opacity:1}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:200;align-items:center;justify-content:center}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain}
+.lb-close{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:var(--gold);cursor:pointer}
+
+/* EVENTS */
+#events{background:var(--dark-2)}
+.events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.8rem}
+.event-card{background:var(--dark-3);border:1px solid rgba(201,168,76,.1);overflow:hidden;transition:transform var(--transition),box-shadow var(--transition)}
+.event-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(0,0,0,.4)}
+.event-card-img{height:190px;overflow:hidden}
+.event-card-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.8);transition:filter var(--transition)}
+.event-card:hover .event-card-img img{filter:brightness(.95)}
+.event-card-body{padding:1.6rem}
+.event-icon{font-size:1.4rem;margin-bottom:.7rem;display:block}
+.event-card-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);margin-bottom:.6rem}
+html[lang="ar"] .event-card-title{font-family:'Amiri',serif}
+.event-card-desc{font-size:.8rem;color:var(--cream-dim);line-height:1.8}
+
+/* CHEF */
+#chef{background:var(--dark)}
+.chef-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4.5rem;align-items:center}
+.chef-img-wrap{position:relative}
+.chef-img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(15%)}
+.chef-frame{position:absolute;top:1rem;left:1rem;right:-1rem;bottom:-1rem;border:1px solid rgba(201,168,76,.25);pointer-events:none;z-index:-1}
+.chef-name{font-family:'Playfair Display',serif;font-size:2.3rem;color:var(--cream);margin:.5rem 0 .2rem}
+html[lang="ar"] .chef-name{font-family:'Amiri',serif}
+.chef-role{font-family:'Cormorant Garamond',serif;font-size:.95rem;color:var(--gold);font-style:italic}
+.chef-bio{color:var(--cream-dim);font-size:.88rem;line-height:1.95;margin-top:1.3rem}
+.chef-sig{font-family:'Playfair Display',serif;font-style:italic;font-size:1.8rem;color:var(--gold-dim);margin-top:1.8rem}
+
+/* REVIEWS */
+#reviews{background:var(--dark-2)}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem}
+.review-card{background:var(--dark-3);padding:2rem;border-top:2px solid var(--gold);position:relative}
+.review-quote{font-size:3.5rem;font-family:'Playfair Display',serif;color:rgba(201,168,76,.1);position:absolute;top:.8rem;right:1.2rem;line-height:1}
+html[dir="rtl"] .review-quote{left:1.2rem;right:auto}
+.review-stars{color:var(--gold);font-size:.85rem;letter-spacing:3px;margin-bottom:.9rem}
+.review-text{font-size:.85rem;color:var(--cream-dim);line-height:1.9;font-style:italic;margin-bottom:1.3rem}
+.review-author{display:flex;align-items:center;gap:.7rem}
+.review-avatar{width:34px;height:34px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:var(--dark);flex-shrink:0}
+.review-name{font-size:.8rem;font-weight:600;color:var(--cream)}
+.review-platform{font-size:.68rem;color:var(--cream-dim)}
+
+/* RESERVATION */
+#reservation{background:var(--dark);position:relative;overflow:hidden}
+#reservation::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,.04) 0%,transparent 70%);pointer-events:none}
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:start}
+.res-info h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.8vw,2.2rem);color:var(--cream);margin-bottom:1.3rem}
+html[lang="ar"] .res-info h2{font-family:'Amiri',serif}
+.res-info p{color:var(--cream-dim);font-size:.86rem;line-height:1.9;margin-bottom:1.8rem}
+.res-detail{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:1.1rem}
+.res-detail-icon{font-size:1.1rem;color:var(--gold);flex-shrink:0;margin-top:.1rem}
+.res-detail-title{display:block;color:var(--cream);font-weight:600;font-size:.83rem;margin-bottom:.2rem}
+.res-detail-text{font-size:.82rem;color:var(--cream-dim);line-height:1.7}
+.res-form{background:var(--dark-3);padding:2.3rem;border:1px solid rgba(201,168,76,.1)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.form-group{margin-bottom:1.1rem}
+.form-group label{display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:.45rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--dark-2);border:1px solid rgba(201,168,76,.18);color:var(--cream);padding:.75rem .9rem;font-family:inherit;font-size:.85rem;transition:border-color var(--transition);border-radius:2px}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--gold)}
+.form-group select option{background:var(--dark-2)}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-submit{width:100%;background:var(--gold);color:var(--dark);padding:.9rem;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;transition:all var(--transition);margin-top:.4rem}
+.form-submit:hover{background:var(--gold-light);transform:translateY(-2px)}
+.form-success{display:none;text-align:center;padding:2rem;color:var(--gold);font-family:'Playfair Display',serif;font-size:1.05rem}
+
+/* LOCATION */
+#location{background:var(--dark-2)}
+.loc-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:start}
+.loc-info h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--cream);margin-bottom:1.4rem}
+html[lang="ar"] .loc-info h3{font-family:'Amiri',serif}
+.loc-item{display:flex;gap:.9rem;margin-bottom:1.4rem;padding-bottom:1.4rem;border-bottom:1px solid rgba(201,168,76,.1)}
+.loc-item:last-child{border-bottom:none}
+.loc-icon{font-size:1.2rem;color:var(--gold);flex-shrink:0;margin-top:.1rem}
+.loc-label{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem;display:block}
+.loc-val{font-size:.85rem;color:var(--cream-dim);line-height:1.7}
+.map-wrap{border:1px solid rgba(201,168,76,.18);overflow:hidden;height:380px}
+.map-wrap iframe{width:100%;height:100%;border:none;filter:grayscale(25%) contrast(1.1)}
+
+/* FOOTER */
+footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.1);padding:3.5rem 2rem 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;max-width:1160px;margin:0 auto 2.5rem}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--gold);font-style:italic}
+.footer-brand p{font-size:.8rem;color:var(--cream-dim);line-height:1.9;margin-top:.8rem}
+.footer-social{display:flex;gap:.7rem;margin-top:1.1rem}
+.social-btn{width:34px;height:34px;border:1px solid rgba(201,168,76,.22);display:flex;align-items:center;justify-content:center;font-size:.82rem;transition:all var(--transition);font-family:sans-serif;color:var(--cream-dim)}
+.social-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--dark)}
+.footer-col h4{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:.65rem}
+.footer-col ul li a{font-size:.8rem;color:var(--cream-dim);transition:color var(--transition)}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-bottom{max-width:1160px;margin:0 auto;padding-top:1.8rem;border-top:1px solid rgba(201,168,76,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.footer-bottom p{font-size:.72rem;color:var(--cream-dim)}
+
+/* RESPONSIVE */
+@media(max-width:920px){
+  .about-grid,.chef-grid,.res-grid,.loc-grid{grid-template-columns:1fr;gap:2.5rem}
+  .about-images{height:300px}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
+  .gallery-item:first-child{grid-column:1/3;grid-row:auto}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:1.8rem}
+  .nav-links,.lang-switcher,.nav-res-btn{display:none}
+  .hamburger{display:flex}
+  .form-row{grid-template-columns:1fr}
+}
+@media(max-width:580px){
+  section{padding:4rem 1.2rem}
+  nav{padding:1rem 1.2rem}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:200px}
+  .gallery-item:first-child{grid-column:auto}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-ctas{flex-direction:column;align-items:center}
+}
+</style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-amber-600 tracking-wide">ZAFARAN <span class="text-gray-900">زعفران</span></div>
-            <nav class="hidden md:flex space-x-reverse space-x-6 font-medium">
-                <a href="#home" class="text-amber-600 hover:text-amber-700">الرئيسية</a>
-                <a href="#about" class="text-gray-600 hover:text-amber-600 transition">من نحن</a>
-                <a href="#menu" class="text-gray-600 hover:text-amber-600 transition">الأطباق</a>
-                <a href="#book" class="bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition shadow-md">احجز طاولتك</a>
-            </nav>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <span class="nav-logo-text">Azafran</span>
+    <span class="nav-logo-sub">Café Restaurant</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n="nav.about">من نحن</a></li>
+    <li><a href="#menu" data-i18n="nav.menu">المنيو</a></li>
+    <li><a href="#gallery" data-i18n="nav.gallery">الصور</a></li>
+    <li><a href="#events" data-i18n="nav.events">المناسبات</a></li>
+    <li><a href="#chef" data-i18n="nav.chef">الشيف</a></li>
+    <li><a href="#reviews" data-i18n="nav.reviews">التقييمات</a></li>
+    <li><a href="#location" data-i18n="nav.location">الموقع</a></li>
+  </ul>
+  <div style="display:flex;gap:.9rem;align-items:center">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('ar')">AR</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="#reservation" class="nav-res-btn" data-i18n="nav.reserve">احجز طاولة</a>
+  </div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button style="position:absolute;top:1.5rem;right:1.5rem;font-size:1.8rem;color:var(--gold)" onclick="closeMobile()">✕</button>
+  <a href="#about" onclick="closeMobile()" data-i18n="nav.about">من نحن</a>
+  <a href="#menu" onclick="closeMobile()" data-i18n="nav.menu">المنيو</a>
+  <a href="#gallery" onclick="closeMobile()" data-i18n="nav.gallery">الصور</a>
+  <a href="#events" onclick="closeMobile()" data-i18n="nav.events">المناسبات</a>
+  <a href="#chef" onclick="closeMobile()" data-i18n="nav.chef">الشيف</a>
+  <a href="#reviews" onclick="closeMobile()" data-i18n="nav.reviews">التقييمات</a>
+  <a href="#location" onclick="closeMobile()" data-i18n="nav.location">الموقع</a>
+  <a href="#reservation" onclick="closeMobile()" data-i18n="nav.reserve">احجز طاولة</a>
+  <div class="lang-switcher" style="margin-top:.8rem">
+    <button class="lang-btn active" onclick="setLang('ar');closeMobile()">AR</button>
+    <button class="lang-btn" onclick="setLang('fr');closeMobile()">FR</button>
+    <button class="lang-btn" onclick="setLang('es');closeMobile()">ES</button>
+    <button class="lang-btn" onclick="setLang('en');closeMobile()">EN</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span class="hero-badge" data-i18n="hero.badge">سلا، المغرب</span></div>
+    <h1 class="display hero-title">Azafran</h1>
+    <p class="hero-sub" data-i18n="hero.sub">واحة هادئة على ضفاف بورقراق — مطبخ أصيل وأجواء لا تُنسى</p>
+    <div class="hero-ctas">
+      <a href="#reservation" class="btn-primary" data-i18n="hero.cta1">احجز طاولتك</a>
+      <a href="#menu" class="btn-outline" data-i18n="hero.cta2">اكتشف القائمة</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span data-i18n="hero.scroll">اكتشف</span>
+    <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="features-grid">
+      <div class="feature-card fade-in"><span class="feature-icon">🌿</span><h3 class="feature-title" data-i18n="f1t">طبيعة خضراء</h3><p class="feature-desc" data-i18n="f1d">8 هكتارات من المساحات الخضراء على ضفاف أبي رقراق</p></div>
+      <div class="feature-card fade-in"><span class="feature-icon">👨‍🍳</span><h3 class="feature-title" data-i18n="f2t">مطبخ مغربي أصيل</h3><p class="feature-desc" data-i18n="f2d">منتجات طازجة محلية، وصفات تقليدية بلمسة إبداعية</p></div>
+      <div class="feature-card fade-in"><span class="feature-icon">👨‍👩‍👧‍👦</span><h3 class="feature-title" data-i18n="f3t">مناسب للعائلات</h3><p class="feature-desc" data-i18n="f3d">بلاصة لعب للأطفال، أجواء هادئة، ومصلى للجميع</p></div>
+      <div class="feature-card fade-in"><span class="feature-icon">🅿️</span><h3 class="feature-title" data-i18n="f4t">باركينغ مجاني</h3><p class="feature-desc" data-i18n="f4d">موقف سيارات مريح ومجاني لجميع زوارنا</p></div>
+      <div class="feature-card fade-in"><span class="feature-icon">💰</span><h3 class="feature-title" data-i18n="f5t">أثمنة في المتناول</h3><p class="feature-desc" data-i18n="f5d">جودة عالية بأسعار معقولة — تجربة استثنائية للجميع</p></div>
+      <div class="feature-card fade-in"><span class="feature-icon">🕌</span><h3 class="feature-title" data-i18n="f6t">مصلى + طواليط</h3><p class="feature-desc" data-i18n="f6d">مرافق نظيفة ومجهزة في متناول الجميع</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images fade-in">
+        <img class="about-img-main" src="https://lh3.googleusercontent.com/p/AF1QipOyPFnSMISmXe1-QdFPwN9-9ADsOhVjK0kU0Hk=s1360-w1360-h1020" alt="Azafran"/>
+        <img class="about-img-accent" src="https://lh3.googleusercontent.com/p/AF1QipNbRm7-Vb5hPVOEjCQjj2oKaU6GvYBFUmpjLXcL=s1360-w1360-h1020" alt="Azafran food" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80'"/>
+      </div>
+      <div class="about-text fade-in">
+        <span class="about-badge" data-i18n="ab.badge">قصتنا</span>
+        <h2 data-i18n="ab.title">واحة هادئة في قلب سلا</h2>
+        <p data-i18n="ab.p1">يقع مطعم أزفران على طريق الولجة بسلا، مندمجاً في حدائق مدرسة بورقراق للبستنة — مساحة خضراء فريدة من أكثر من 8 هكتارات على ضفاف وادي أبي رقراق.</p>
+        <p data-i18n="ab.p2">نقدم مطبخاً مغربياً أصيلاً بمنتجات طازجة موسمية محلية، مُعدّة بإبداع الشيف يوسف وفريقه، في أجواء دافئة تجمع بين الطبيعة والأناقة.</p>
+        <p data-i18n="ab.p3">مناسب للعائلات، الأزواج، الأصدقاء — ولكل من يريد لحظة هدوء بعيداً عن صخب المدينة مع أسعار في متناول الجميع.</p>
+        <div class="about-stats">
+          <div><span class="stat-num">8+</span><span class="stat-label" data-i18n="ab.s1">هكتار طبيعة</span></div>
+          <div><span class="stat-num">4.7</span><span class="stat-label" data-i18n="ab.s2">تقييم فيسبوك</span></div>
+          <div><span class="stat-num">5★</span><span class="stat-label">TripAdvisor</span></div>
         </div>
-    </header>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="home" class="relative bg-gray-900 text-white py-24 lg:py-32 overflow-hidden">
-        <div class="absolute inset-0 opacity-40 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80');"></div>
-        <div class="container mx-auto px-6 relative z-10 text-center max-w-3xl">
-            <span class="text-amber-400 font-semibold uppercase tracking-wider block mb-3">مرحباً بكم في مطعم زعفران</span>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">تذوق أصالة الطبخ بلمسة عصرية</h1>
-            <p class="text-xl text-gray-300 mb-8">نأخذكم في رحلة ساحرة عبر النكهات الأصيلة والمكونات الطازجة المختارة بعناية فائقة.</p>
-            <a href="#book" class="inline-block bg-amber-500 text-gray-900 font-bold px-8 py-3 rounded-xl hover:bg-amber-400 transition transform hover:-translate-y-1 shadow-lg">احجز طاولتك الآن</a>
+<!-- MENU -->
+<section id="menu">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-eyebrow" data-i18n="mn.eyebrow">قائمة الطعام</span>
+      <h2 class="section-title" data-i18n="mn.title">القائمة</h2>
+      <div class="section-divider"><div class="divider-diamond"></div></div>
+    </div>
+    <div class="menu-cats">
+      <button class="cat-btn active" onclick="filterMenu('all',this)" data-i18n="mn.all">الكل</button>
+      <button class="cat-btn" onclick="filterMenu('breakfast',this)" data-i18n="mn.breakfast">الفطور</button>
+      <button class="cat-btn" onclick="filterMenu('starter',this)" data-i18n="mn.starter">المقبلات</button>
+      <button class="cat-btn" onclick="filterMenu('main',this)" data-i18n="mn.main">الأطباق الرئيسية</button>
+      <button class="cat-btn" onclick="filterMenu('tagine',this)" data-i18n="mn.tagine">الطاجين</button>
+      <button class="cat-btn" onclick="filterMenu('dessert',this)" data-i18n="mn.dessert">الحلويات</button>
+      <button class="cat-btn" onclick="filterMenu('drinks',this)" data-i18n="mn.drinks">المشروبات</button>
+    </div>
+    <div class="menu-grid" id="menuGrid">
+      <div class="menu-item" data-cat="breakfast"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.b1n">فطور مغربي كامل</div><div class="menu-item-desc" data-i18n="mi.b1d">خبز، مسمن، بيض، زيتون، زبدة، عسل، أجبان، قهوة أو أتاي</div><span class="menu-badge" data-i18n="mi.pop">الأكثر طلباً</span></div><div class="menu-item-price">65 DH</div></div>
+      <div class="menu-item" data-cat="breakfast"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.b2n">بيض بالكفتة</div><div class="menu-item-desc" data-i18n="mi.b2d">بيض مقلي مع كفتة محلية بالبهارات المغربية</div></div><div class="menu-item-price">45 DH</div></div>
+      <div class="menu-item" data-cat="breakfast"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.b3n">أتاي بالنعناع</div><div class="menu-item-desc" data-i18n="mi.b3d">شاي مغربي أصيل بالنعناع الطازج</div></div><div class="menu-item-price">15 DH</div></div>
+      <div class="menu-item" data-cat="starter"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.s1n">سلطة أزفران</div><div class="menu-item-desc" data-i18n="mi.s1d">خضروات طازجة موسمية بتتبيلة الزعفران والليمون</div></div><div class="menu-item-price">35 DH</div></div>
+      <div class="menu-item" data-cat="starter"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.s2n">بريوات الجبن والسبانخ</div><div class="menu-item-desc" data-i18n="mi.s2d">ورقة بسطيلة محشوة بالجبن والسبانخ الطازجة</div></div><div class="menu-item-price">40 DH</div></div>
+      <div class="menu-item" data-cat="starter"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.s3n">حريرة مغربية</div><div class="menu-item-desc" data-i18n="mi.s3d">حساء تقليدي بالطماطم والعدس والكزبرة</div><span class="menu-badge" data-i18n="mi.pop">الأكثر طلباً</span></div><div class="menu-item-price">25 DH</div></div>
+      <div class="menu-item" data-cat="main"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.m1n">كسكس الجمعة</div><div class="menu-item-desc" data-i18n="mi.m1d">كسكس بالخضروات واللحم أو الدجاج، وصفة جدتنا</div><span class="menu-badge" data-i18n="mi.pop">الأكثر طلباً</span></div><div class="menu-item-price">75 DH</div></div>
+      <div class="menu-item" data-cat="main"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.m2n">دجاج محمر بالأعشاب</div><div class="menu-item-desc" data-i18n="mi.m2d">دجاج بلدي مشوي بالزعتر وعصير الليمون وزيت الزيتون</div></div><div class="menu-item-price">85 DH</div></div>
+      <div class="menu-item" data-cat="main"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.m3n">سمك على الطريقة المغربية</div><div class="menu-item-desc" data-i18n="mi.m3d">سمك طازج بالشرمولة والخضروات الموسمية</div></div><div class="menu-item-price">95 DH</div></div>
+      <div class="menu-item" data-cat="tagine"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.t1n">طاجين اللحم بالبرقوق</div><div class="menu-item-desc" data-i18n="mi.t1d">لحم غنم طري مع البرقوق واللوز والقرفة</div><span class="menu-badge" data-i18n="mi.pop">الأكثر طلباً</span></div><div class="menu-item-price">90 DH</div></div>
+      <div class="menu-item" data-cat="tagine"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.t2n">طاجين الدجاج بالزيتون</div><div class="menu-item-desc" data-i18n="mi.t2d">دجاج بلدي مع الزيتون والليمون المعصفر والزعفران</div></div><div class="menu-item-price">80 DH</div></div>
+      <div class="menu-item" data-cat="tagine"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.t3n">طاجين الخضروات</div><div class="menu-item-desc" data-i18n="mi.t3d">خضروات موسمية بتوابل مغربية أصيلة</div></div><div class="menu-item-price">60 DH</div></div>
+      <div class="menu-item" data-cat="dessert"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.d1n">كعب الغزال</div><div class="menu-item-desc" data-i18n="mi.d1d">حلوى مغربية تقليدية باللوز والقرفة وماء الورد</div></div><div class="menu-item-price">30 DH</div></div>
+      <div class="menu-item" data-cat="dessert"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.d2n">سلو</div><div class="menu-item-desc" data-i18n="mi.d2d">سلو مغربي تقليدي بالسمسم واللوز والعسل</div></div><div class="menu-item-price">25 DH</div></div>
+      <div class="menu-item" data-cat="drinks"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.dr1n">عصير طازج</div><div class="menu-item-desc" data-i18n="mi.dr1d">برتقال، جزر، فراولة أو كوكتيل فواكه موسمية</div></div><div class="menu-item-price">20 DH</div></div>
+      <div class="menu-item" data-cat="drinks"><div class="menu-item-info"><div class="menu-item-name" data-i18n="mi.dr2n">قهوة وكاپوتشينو</div><div class="menu-item-desc" data-i18n="mi.dr2d">إسبريسو، نوار، كاهوة بالحليب أو كاپوتشينو</div></div><div class="menu-item-price">15–25 DH</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-eyebrow" data-i18n="gl.eyebrow">معرض الصور</span>
+      <h2 class="section-title" data-i18n="gl.title">لحظات أزفران</h2>
+      <div class="section-divider"><div class="divider-diamond"></div></div>
+    </div>
+    <div class="gallery-grid fade-in">
+      <div class="gallery-item" onclick="openLB(this)"><img src="https://lh3.googleusercontent.com/p/AF1QipOyPFnSMISmXe1-QdFPwN9-9ADsOhVjK0kU0Hk=s1360-w1360-h1020" alt="Azafran garden"/><div class="gal-overlay">⊕</div></div>
+      <div class="gallery-item" onclick="openLB(this)"><img src="https://lh3.googleusercontent.com/p/AF1QipNbRm7-Vb5hPVOEjCQjj2oKaU6GvYBFUmpjLXcL=s1360-w1360-h1020" alt="Azafran food" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80'"/><div class="gal-overlay">⊕</div></div>
+      <div class="gallery-item" onclick="openLB(this)"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Moroccan food"/><div class="gal-overlay">⊕</div></div>
+      <div class="gallery-item" onclick="openLB(this)"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Restaurant"/><div class="gal-overlay">⊕</div></div>
+      <div class="gallery-item" onclick="openLB(this)"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Food"/><div class="gal-overlay">⊕</div></div>
+    </div>
+  </div>
+</section>
+<div class="lightbox" id="lightbox" onclick="closeLB()"><span class="lb-close">✕</span><img id="lbImg" src="" alt=""/></div>
+
+<!-- EVENTS -->
+<section id="events">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-eyebrow" data-i18n="ev.eyebrow">مناسباتكم الخاصة</span>
+      <h2 class="section-title" data-i18n="ev.title">كل مناسبة تستحق أزفران</h2>
+      <div class="section-divider"><div class="divider-diamond"></div></div>
+    </div>
+    <div class="events-grid">
+      <div class="event-card fade-in"><div class="event-card-img"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80" alt="Birthday"/></div><div class="event-card-body"><span class="event-icon">🎂</span><h3 class="event-card-title" data-i18n="ev.b.t">عيد ميلاد</h3><p class="event-card-desc" data-i18n="ev.b.d">احتفل بعيد ميلادك في إطار طبيعي ساحر. نُعدّ لك الزينة والمفاجآت لتجعل اليوم لا يُنسى.</p></div></div>
+      <div class="event-card fade-in"><div class="event-card-img"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80" alt="Proposal"/></div><div class="event-card-body"><span class="event-icon">💍</span><h3 class="event-card-title" data-i18n="ev.p.t">طلب الزواج</h3><p class="event-card-desc" data-i18n="ev.p.d">اختر أجمل لحظة في حياتك في واحة أزفران. نُهيئ لك الأجواء الرومانسية المثالية.</p></div></div>
+      <div class="event-card fade-in"><div class="event-card-img"><img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&q=80" alt="Meeting"/></div><div class="event-card-body"><span class="event-icon">💼</span><h3 class="event-card-title" data-i18n="ev.m.t">اجتماع عمل</h3><p class="event-card-desc" data-i18n="ev.m.d">فضاء هادئ بعيد عن الضجيج مثالي للاجتماعات في أجواء تُلهم الإبداع.</p></div></div>
+      <div class="event-card fade-in"><div class="event-card-img"><img src="https://images.unsplash.com/photo-1528605105345-5344ea20e269?w=600&q=80" alt="Family"/></div><div class="event-card-body"><span class="event-icon">👨‍👩‍👧‍👦</span><h3 class="event-card-title" data-i18n="ev.f.t">لمّة عائلية</h3><p class="event-card-desc" data-i18n="ev.f.d">بلاصة لعب للأطفال، فضاء واسع للكبار — اليكيند المثالي مع العائلة.</p></div></div>
+      <div class="event-card fade-in"><div class="event-card-img"><img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=80" alt="Friends"/></div><div class="event-card-body"><span class="event-icon">🥂</span><h3 class="event-card-title" data-i18n="ev.fr.t">لقاء الأصدقاء</h3><p class="event-card-desc" data-i18n="ev.fr.d">وجبة مشتركة، ضحكات، وذكريات جميلة في أجواء طبيعية لا مثيل لها.</p></div></div>
+      <div class="event-card fade-in"><div class="event-card-img"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80" alt="Special"/></div><div class="event-card-body"><span class="event-icon">💒</span><h3 class="event-card-title" data-i18n="ev.o.t">مناسبات أخرى</h3><p class="event-card-desc" data-i18n="ev.o.d">خطوبة، عقد قران، تخرج أو أي مناسبة خاصة — أزفران يصنع لك الأجواء الأمثل.</p></div></div>
+    </div>
+    <div style="text-align:center;margin-top:3rem"><a href="#reservation" class="btn-primary" data-i18n="ev.cta">احجز لمناسبتك</a></div>
+  </div>
+</section>
+
+<!-- CHEF -->
+<section id="chef">
+  <div class="container">
+    <div class="chef-grid">
+      <div class="chef-img-wrap fade-in">
+        <img class="chef-img" src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&q=80" alt="Chef Youssef"/>
+        <div class="chef-frame"></div>
+      </div>
+      <div class="fade-in">
+        <span class="section-eyebrow" data-i18n="ch.eyebrow">خلف الكواليس</span>
+        <div style="margin-top:.8rem">
+          <div class="chef-name" data-i18n="ch.name">الشيف يوسف</div>
+          <div class="chef-role" data-i18n="ch.role">Chef & Gérant — Azafran</div>
         </div>
-    </section>
+        <p class="chef-bio" data-i18n="ch.bio1">الشيف يوسف ليس فقط طباخاً — هو رائد مشروع استثنائي يجمع بين الطبخ الأصيل والمسؤولية الاجتماعية. يدير أزفران كجزء من مشروع مدرسة بورقراق للبستنة التي تُدرّب الشباب على المهارات الخضراء.</p>
+        <p class="chef-bio" data-i18n="ch.bio2">فلسفته بسيطة: منتجات طازجة موسمية، وصفات مغربية تقليدية بلمسة إبداعية، وأسعار تجعل التجربة في متناول الجميع. المنيو يتغير مع كل موسم.</p>
+        <div class="chef-sig">Youssef</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="about" class="py-20 bg-white">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="text-amber-600 font-semibold block mb-2">قصتنا</span>
-                <h2 class="text-3xl font-bold mb-6 text-gray-950">لماذا مطعم زعفران؟</h2>
-                <p class="text-gray-600 mb-4 leading-relaxed">في زعفران، لا نقدم فقط الطعام، بل نصنع تجارب ولحظات لا تُنسى. كل طبق يتم تحضيره بشغف كبير من طرف أمهر الطهاة، معتمدين على توابل الزعفران الحر والمكونات المحلية الطازجة.</p>
-                <p class="text-gray-600 leading-relaxed">نحرص على توفير أجواء مريحة وراقية تناسب اللقاءات العائلية واجتماعات العمل.</p>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Dish 1" class="rounded-xl shadow-md transform translate-y-4">
-                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=400&q=80" alt="Restaurant Interior" class="rounded-xl shadow-md">
-            </div>
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-eyebrow" data-i18n="rv.eyebrow">ما يقوله زوارنا</span>
+      <h2 class="section-title" data-i18n="rv.title">التقييمات</h2>
+      <div class="section-divider"><div class="divider-diamond"></div></div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card fade-in"><div class="review-quote">"</div><div class="review-stars">★★★★★</div><p class="review-text" data-i18n="rv.r1">مكان رائع وهادئ، الطعام لذيذ جداً والأجواء الطبيعية تجعل التجربة مميزة. الشيف يوسف وفريقه يرحبون بك كأنك في بيتك.</p><div class="review-author"><div class="review-avatar">S</div><div><div class="review-name">Salma B.</div><div class="review-platform">Google Maps ⭐ 5/5</div></div></div></div>
+      <div class="review-card fade-in"><div class="review-quote">"</div><div class="review-stars">★★★★★</div><p class="review-text" data-i18n="rv.r2">Weekend brunch in an oasis close to Rabat. Perfect for families, the kids loved the play area and we enjoyed the peaceful green setting. Highly recommended!</p><div class="review-author"><div class="review-avatar">M</div><div><div class="review-name">Mohamed A.</div><div class="review-platform">TripAdvisor ⭐ 5/5</div></div></div></div>
+      <div class="review-card fade-in"><div class="review-quote">"</div><div class="review-stars">★★★★★</div><p class="review-text" data-i18n="rv.r3">Un endroit magnifique avec une cuisine marocaine authentique. Le service est attentionné et les prix sont très raisonnables. Je recommande vivement!</p><div class="review-author"><div class="review-avatar">L</div><div><div class="review-name">Laila M.</div><div class="review-platform">Facebook ⭐ 4.7/5</div></div></div></div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem"><a href="https://www.google.com/maps/place/Azafran+Caf%C3%A9+Restaurant/@34.0136901,-6.7877057,17z" target="_blank" class="btn-outline" data-i18n="rv.cta">اترك تقييمك على Google</a></div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="reservation">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-eyebrow" data-i18n="rs.eyebrow">احجز طاولتك</span>
+      <h2 class="section-title" data-i18n="rs.title">الحجز</h2>
+      <div class="section-divider"><div class="divider-diamond"></div></div>
+    </div>
+    <div class="res-grid">
+      <div class="res-info fade-in">
+        <h2 data-i18n="rs.h">تعالَ واستمتع بتجربة أزفران</h2>
+        <p data-i18n="rs.p">احجز طاولتك أو فضاءك لمناسبتك الخاصة. نحن هنا لنجعل لحظتك استثنائية في قلب الطبيعة.</p>
+        <div class="res-detail"><span class="res-detail-icon">🕐</span><div><span class="res-detail-title" data-i18n="rs.h1">ساعات العمل</span><span class="res-detail-text" data-i18n="rs.h1v">كل الأيام: 8:00 ص — 6:00 م</span></div></div>
+        <div class="res-detail"><span class="res-detail-icon">📍</span><div><span class="res-detail-title" data-i18n="rs.h2">الموقع</span><span class="res-detail-text" data-i18n="rs.h2v">طريق الولجة، سلا — بجانب مدرسة بورقراق للبستنة</span></div></div>
+        <div class="res-detail"><span class="res-detail-icon">🅿️</span><div><span class="res-detail-title" data-i18n="rs.h3">باركينغ</span><span class="res-detail-text" data-i18n="rs.h3v">موقف سيارات مجاني متاح</span></div></div>
+        <div class="res-detail"><span class="res-detail-icon">🕌</span><div><span class="res-detail-title" data-i18n="rs.h4">مصلى</span><span class="res-detail-text" data-i18n="rs.h4v">مرافق نظيفة ومتاحة للجميع</span></div></div>
+      </div>
+      <div class="res-form fade-in">
+        <div id="resFormWrap">
+          <div class="form-row">
+            <div class="form-group"><label data-i18n="fm.name">الاسم</label><input type="text" id="rName" placeholder="محمد أمين"/></div>
+            <div class="form-group"><label data-i18n="fm.phone">الهاتف</label><input type="tel" id="rPhone" placeholder="+212 6XX XXX XXX"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label data-i18n="fm.date">التاريخ</label><input type="date" id="rDate"/></div>
+            <div class="form-group"><label data-i18n="fm.time">الوقت</label><input type="time" id="rTime" min="08:00" max="17:30"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label data-i18n="fm.guests">عدد الأشخاص</label><select id="rGuests"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5-8</option><option>9-15</option><option>+15</option></select></div>
+            <div class="form-group"><label data-i18n="fm.occ">المناسبة</label><select id="rOcc"><option value="normal" data-i18n="fm.o1">عادية</option><option value="birthday" data-i18n="fm.o2">عيد ميلاد</option><option value="proposal" data-i18n="fm.o3">طلب زواج</option><option value="meeting" data-i18n="fm.o4">اجتماع</option><option value="family" data-i18n="fm.o5">لمّة عائلية</option><option value="other" data-i18n="fm.o6">أخرى</option></select></div>
+          </div>
+          <div class="form-group"><label data-i18n="fm.notes">ملاحظات</label><textarea id="rNotes" placeholder="أي طلب خاص، حساسية غذائية، تزيين..."></textarea></div>
+          <button class="form-submit" onclick="submitRes()" data-i18n="fm.submit">تأكيد الحجز</button>
         </div>
-    </section>
+        <div class="form-success" id="resSuccess"><div style="font-size:2.5rem;margin-bottom:1rem">✓</div><p data-i18n="fm.ok">تم استلام حجزك! سنتواصل معك قريباً لتأكيد الموعد.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="menu" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-6 text-center max-w-3xl mb-12">
-            <span class="text-amber-600 font-semibold block mb-2">قائمتنا المميزة</span>
-            <h2 class="text-3xl font-bold text-gray-950">أطباق نوصي بها</h2>
-        </div>
-        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8">
-            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80" alt="Plate 1" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2">طاجين زعفران الخاص</h3>
-                    <p class="text-gray-600 text-sm mb-4">لحم محمر ببطء مع البرقوق واللوز المنسم بالزعفران الحر.</p>
-                    <span class="text-amber-600 font-bold text-lg">120 درهم</span>
-                </div>
-            </div>
-            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
-                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80" alt="Plate 2" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2">باستا ثمار البحر بالزعفران</h3>
-                    <p class="text-gray-600 text-sm mb-4">باستا طازجة مع فواكه البحر بصلصة الزعفران الكريمة الفاخرة.</p>
-                    <span class="text-amber-600 font-bold text-lg">95 درهم</span>
-                </div>
-            </div>
-            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
-                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80" alt="Plate 3" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2">سلطة الملكية المقرمشة</h3>
-                    <p class="text-gray-600 text-sm mb-4">مزيج من الخضار العضوية مع صلصة خاصة من ابتكار الشيف.</p>
-                    <span class="text-amber-600 font-bold text-lg">65 درهم</span>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- LOCATION -->
+<section id="location">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-eyebrow" data-i18n="lc.eyebrow">كيف تصلنا</span>
+      <h2 class="section-title" data-i18n="lc.title">موقعنا</h2>
+      <div class="section-divider"><div class="divider-diamond"></div></div>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-info fade-in">
+        <h3 data-i18n="lc.h">أوجدنا في سلا</h3>
+        <div class="loc-item"><span class="loc-icon">📍</span><div><span class="loc-label" data-i18n="lc.l1">العنوان</span><span class="loc-val">طريق الولجة، سلا<br>بجانب مدرسة بورقراق للبستنة<br>جهة الرباط-سلا-القنيطرة، المغرب</span></div></div>
+        <div class="loc-item"><span class="loc-icon">🕐</span><div><span class="loc-label" data-i18n="lc.l2">ساعات العمل</span><span class="loc-val" data-i18n="lc.l2v">كل الأيام: 8:00 ص — 6:00 م</span></div></div>
+        <div class="loc-item"><span class="loc-icon">🚗</span><div><span class="loc-label" data-i18n="lc.l3">الوصول</span><span class="loc-val" data-i18n="lc.l3v">باركينغ مجاني — سهل الوصول من الرباط وسلا</span></div></div>
+        <a href="https://www.google.com/maps/place/Azafran+Caf%C3%A9+Restaurant/@34.0136901,-6.7877057,17z" target="_blank" class="btn-primary" style="margin-top:1.2rem" data-i18n="lc.gmaps">افتح في خرائط Google</a>
+      </div>
+      <div class="map-wrap fade-in">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.7!2d-6.7877057!3d34.0136901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76b8cc1627a67%3A0x7ecd9748f5314b3b!2sAzafran+Caf%C3%A9+Restaurant!5e0!3m2!1sfr!2sma!4v1" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="book" class="py-20 bg-white">
-        <div class="container mx-auto px-6 max-w-2xl bg-gray-50 p-8 md:p-12 rounded-3xl shadow-lg border border-gray-100">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-950 mb-2">احجز طاولتك الآن</h2>
-                <p class="text-gray-600">املأ الاستمارة وسنقوم بتأكيد حجزك فوراً عبر الواتساب أو الهاتف</p>
-            </div>
-            
-            <form id="bookingForm" class="space-y-6">
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">الاسم الكامل</label>
-                    <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="محمد العلمي">
-                </div>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">رقم الهاتف (واتساب)</label>
-                        <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:outline-none text-left" placeholder="0612345678">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">عدد الأفراد</label>
-                        <select id="guests" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white">
-                            <option value="2">فردين</option>
-                            <option value="3">3 أفراد</option>
-                            <option value="4">4 أفراد</option>
-                            <option value="5+">عائلة (أكثر من 5)</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">التاريخ</label>
-                        <input type="date" id="date" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">التوقيت</label>
-                        <input type="time" id="time" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                    </div>
-                </div>
-                <button type="submit" class="w-full bg-amber-500 text-white font-bold py-4 rounded-xl hover:bg-amber-600 transition shadow-md text-lg">تأكيد الحجز أوتوماتيكياً</button>
-            </form>
-        </div>
-    </section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">Azafran</div>
+      <p data-i18n="ft.desc">واحة هادئة على ضفاف بورقراق — مطبخ مغربي أصيل في أجواء طبيعية استثنائية بسلا، المغرب.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/restaurantazafransale/" target="_blank" class="social-btn" title="Facebook">f</a>
+        <a href="#" class="social-btn" title="Instagram">ig</a>
+        <a href="https://restaurantguru.com/Azafran-Cafe-Restaurant-Sale-Rabat" target="_blank" class="social-btn" title="Restaurant Guru">rg</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="ft.nav">التنقل</h4>
+      <ul>
+        <li><a href="#about" data-i18n="nav.about">من نحن</a></li>
+        <li><a href="#menu" data-i18n="nav.menu">المنيو</a></li>
+        <li><a href="#gallery" data-i18n="nav.gallery">الصور</a></li>
+        <li><a href="#events" data-i18n="nav.events">المناسبات</a></li>
+        <li><a href="#chef" data-i18n="nav.chef">الشيف</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="ft.srv">خدماتنا</h4>
+      <ul>
+        <li><a href="#reservation" data-i18n="ft.s1">الحجز</a></li>
+        <li><a href="#events" data-i18n="ft.s2">المناسبات</a></li>
+        <li><a href="#reviews" data-i18n="ft.s3">التقييمات</a></li>
+        <li><a href="#location" data-i18n="ft.s4">الموقع</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="ft.links">روابط</h4>
+      <ul>
+        <li><a href="https://www.google.com/maps/place/Azafran+Caf%C3%A9+Restaurant/@34.0136901,-6.7877057,17z" target="_blank">Google Maps</a></li>
+        <li><a href="https://www.facebook.com/restaurantazafransale/" target="_blank">Facebook</a></li>
+        <li><a href="https://restaurantguru.com/Azafran-Cafe-Restaurant-Sale-Rabat" target="_blank">Restaurant Guru</a></li>
+        <li><a href="https://www.tripadvisor.com" target="_blank">TripAdvisor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-i18n="ft.copy">© 2025 Azafran Café Restaurant — سلا، المغرب. جميع الحقوق محفوظة.</p>
+    <p style="color:var(--gold-dim);font-size:.68rem">طريق الولجة، سلا | 8:00 — 18:00</p>
+  </div>
+</footer>
 
-    <footer class="bg-gray-950 text-gray-400 py-8 text-center border-t border-gray-900">
-        <p class="text-sm">&copy; 2026 مطعم زعفران. جميع الحقوق محفوظة. تم التطوير بكل شغف.</p>
-    </footer>
+<script>
+const T = {
+ar:{
+"nav.about":"من نحن","nav.menu":"المنيو","nav.gallery":"الصور","nav.events":"المناسبات","nav.chef":"الشيف","nav.reviews":"التقييمات","nav.location":"الموقع","nav.reserve":"احجز طاولة",
+"hero.badge":"سلا، المغرب","hero.sub":"واحة هادئة على ضفاف بورقراق — مطبخ أصيل وأجواء لا تُنسى","hero.cta1":"احجز طاولتك","hero.cta2":"اكتشف القائمة","hero.scroll":"اكتشف",
+"f1t":"طبيعة خضراء","f1d":"8 هكتارات من المساحات الخضراء على ضفاف أبي رقراق","f2t":"مطبخ مغربي أصيل","f2d":"منتجات طازجة محلية، وصفات تقليدية بلمسة إبداعية","f3t":"مناسب للعائلات","f3d":"بلاصة لعب للأطفال، أجواء هادئة، ومصلى للجميع","f4t":"باركينغ مجاني","f4d":"موقف سيارات مريح ومجاني لجميع زوارنا","f5t":"أثمنة في المتناول","f5d":"جودة عالية بأسعار معقولة — تجربة استثنائية للجميع","f6t":"مصلى + طواليط","f6d":"مرافق نظيفة ومجهزة في متناول الجميع",
+"ab.badge":"قصتنا","ab.title":"واحة هادئة في قلب سلا","ab.p1":"يقع مطعم أزفران على طريق الولجة بسلا، مندمجاً في حدائق مدرسة بورقراق للبستنة — مساحة خضراء فريدة من أكثر من 8 هكتارات على ضفاف وادي أبي رقراق.","ab.p2":"نقدم مطبخاً مغربياً أصيلاً بمنتجات طازجة موسمية محلية، مُعدّة بإبداع الشيف يوسف وفريقه، في أجواء دافئة تجمع بين الطبيعة والأناقة.","ab.p3":"مناسب للعائلات، الأزواج، الأصدقاء — ولكل من يريد لحظة هدوء بعيداً عن صخب المدينة مع أسعار في متناول الجميع.","ab.s1":"هكتار طبيعة","ab.s2":"تقييم فيسبوك",
+"mn.eyebrow":"قائمة الطعام","mn.title":"القائمة","mn.all":"الكل","mn.breakfast":"الفطور","mn.starter":"المقبلات","mn.main":"الأطباق الرئيسية","mn.tagine":"الطاجين","mn.dessert":"الحلويات","mn.drinks":"المشروبات",
+"mi.pop":"الأكثر طلباً",
+"mi.b1n":"فطور مغربي كامل","mi.b1d":"خبز، مسمن، بيض، زيتون، زبدة، عسل، أجبان، قهوة أو أتاي","mi.b2n":"بيض بالكفتة","mi.b2d":"بيض مقلي مع كفتة محلية بالبهارات المغربية","mi.b3n":"أتاي بالنعناع","mi.b3d":"شاي مغربي أصيل بالنعناع الطازج",
+"mi.s1n":"سلطة أزفران","mi.s1d":"خضروات طازجة موسمية بتتبيلة الزعفران والليمون","mi.s2n":"بريوات الجبن والسبانخ","mi.s2d":"ورقة بسطيلة محشوة بالجبن والسبانخ الطازجة","mi.s3n":"حريرة مغربية","mi.s3d":"حساء تقليدي بالطماطم والعدس والكزبرة",
+"mi.m1n":"كسكس الجمعة","mi.m1d":"كسكس بالخضروات واللحم أو الدجاج، وصفة جدتنا","mi.m2n":"دجاج محمر بالأعشاب","mi.m2d":"دجاج بلدي مشوي بالزعتر وعصير الليمون وزيت الزيتون","mi.m3n":"سمك على الطريقة المغربية","mi.m3d":"سمك طازج بالشرمولة والخضروات الموسمية",
+"mi.t1n":"طاجين اللحم بالبرقوق","mi.t1d":"لحم غنم طري مع البرقوق واللوز والقرفة","mi.t2n":"طاجين الدجاج بالزيتون","mi.t2d":"دجاج بلدي مع الزيتون والليمون المعصفر والزعفران","mi.t3n":"طاجين الخضروات","mi.t3d":"خضروات موسمية بتوابل مغربية أصيلة",
+"mi.d1n":"كعب الغزال","mi.d1d":"حلوى مغربية تقليدية باللوز والقرفة وماء الورد","mi.d2n":"سلو","mi.d2d":"سلو مغربي تقليدي بالسمسم واللوز والعسل",
+"mi.dr1n":"عصير طازج","mi.dr1d":"برتقال، جزر، فراولة أو كوكتيل فواكه موسمية","mi.dr2n":"قهوة وكاپوتشينو","mi.dr2d":"إسبريسو، نوار، كاهوة بالحليب أو كاپوتشينو",
+"gl.eyebrow":"معرض الصور","gl.title":"لحظات أزفران",
+"ev.eyebrow":"مناسباتكم الخاصة","ev.title":"كل مناسبة تستحق أزفران","ev.cta":"احجز لمناسبتك","ev.b.t":"عيد ميلاد","ev.b.d":"احتفل بعيد ميلادك في إطار طبيعي ساحر. نُعدّ لك الزينة والمفاجآت لتجعل اليوم لا يُنسى.","ev.p.t":"طلب الزواج","ev.p.d":"اختر أجمل لحظة في حياتك في واحة أزفران. نُهيئ لك الأجواء الرومانسية المثالية.","ev.m.t":"اجتماع عمل","ev.m.d":"فضاء هادئ بعيد عن الضجيج مثالي للاجتماعات في أجواء تُلهم الإبداع.","ev.f.t":"لمّة عائلية","ev.f.d":"بلاصة لعب للأطفال، فضاء واسع للكبار — اليكيند المثالي مع العائلة.","ev.fr.t":"لقاء الأصدقاء","ev.fr.d":"وجبة مشتركة، ضحكات، وذكريات جميلة في أجواء طبيعية لا مثيل لها.","ev.o.t":"مناسبات أخرى","ev.o.d":"خطوبة، عقد قران، تخرج أو أي مناسبة خاصة — أزفران يصنع لك الأجواء الأمثل.",
+"ch.eyebrow":"خلف الكواليس","ch.name":"الشيف يوسف","ch.role":"Chef & Gérant — Azafran","ch.bio1":"الشيف يوسف ليس فقط طباخاً — هو رائد مشروع استثنائي يجمع بين الطبخ الأصيل والمسؤولية الاجتماعية. يدير أزفران كجزء من مشروع مدرسة بورقراق للبستنة.","ch.bio2":"فلسفته بسيطة: منتجات طازجة موسمية، وصفات مغربية بلمسة إبداعية، وأسعار تجعل التجربة في متناول الجميع.",
+"rv.eyebrow":"ما يقوله زوارنا","rv.title":"التقييمات","rv.cta":"اترك تقييمك على Google","rv.r1":"مكان رائع وهادئ، الطعام لذيذ جداً والأجواء الطبيعية تجعل التجربة مميزة. الشيف يوسف وفريقه يرحبون بك كأنك في بيتك.","rv.r2":"Weekend brunch in an oasis close to Rabat. Perfect for families, the kids loved the play area. Highly recommended!","rv.r3":"Un endroit magnifique avec une cuisine marocaine authentique. Le service est attentionné et les prix sont très raisonnables.",
+"rs.eyebrow":"احجز طاولتك","rs.title":"الحجز","rs.h":"تعالَ واستمتع بتجربة أزفران","rs.p":"احجز طاولتك أو فضاءك لمناسبتك الخاصة. نحن هنا لنجعل لحظتك استثنائية في قلب الطبيعة.","rs.h1":"ساعات العمل","rs.h1v":"كل الأيام: 8:00 ص — 6:00 م","rs.h2":"الموقع","rs.h2v":"طريق الولجة، سلا — بجانب مدرسة بورقراق للبستنة","rs.h3":"باركينغ","rs.h3v":"موقف سيارات مجاني متاح","rs.h4":"مصلى","rs.h4v":"مرافق نظيفة ومتاحة للجميع",
+"fm.name":"الاسم","fm.phone":"الهاتف","fm.date":"التاريخ","fm.time":"الوقت","fm.guests":"عدد الأشخاص","fm.occ":"المناسبة","fm.notes":"ملاحظات","fm.o1":"عادية","fm.o2":"عيد ميلاد","fm.o3":"طلب زواج","fm.o4":"اجتماع","fm.o5":"لمّة عائلية","fm.o6":"أخرى","fm.submit":"تأكيد الحجز","fm.ok":"تم استلام حجزك! سنتواصل معك قريباً لتأكيد الموعد.",
+"lc.eyebrow":"كيف تصلنا","lc.title":"موقعنا","lc.h":"أوجدنا في سلا","lc.l1":"العنوان","lc.l2":"ساعات العمل","lc.l2v":"كل الأيام: 8:00 ص — 6:00 م","lc.l3":"الوصول","lc.l3v":"باركينغ مجاني — سهل الوصول من الرباط وسلا","lc.gmaps":"افتح في خرائط Google",
+"ft.desc":"واحة هادئة على ضفاف بورقراق — مطبخ مغربي أصيل في أجواء طبيعية استثنائية بسلا، المغرب.","ft.nav":"التنقل","ft.srv":"خدماتنا","ft.links":"روابط","ft.s1":"الحجز","ft.s2":"المناسبات","ft.s3":"التقييمات","ft.s4":"الموقع","ft.copy":"© 2025 Azafran Café Restaurant — سلا، المغرب. جميع الحقوق محفوظة."
+},
+fr:{
+"nav.about":"À propos","nav.menu":"Menu","nav.gallery":"Galerie","nav.events":"Événements","nav.chef":"Le Chef","nav.reviews":"Avis","nav.location":"Localisation","nav.reserve":"Réserver",
+"hero.badge":"Salé, Maroc","hero.sub":"Une oasis paisible sur les rives du Bouregreg — cuisine authentique et ambiance inoubliable","hero.cta1":"Réserver une table","hero.cta2":"Découvrir le menu","hero.scroll":"Découvrir",
+"f1t":"Nature verdoyante","f1d":"8 hectares d'espaces verts sur les rives du Bouregreg","f2t":"Cuisine marocaine authentique","f2d":"Produits frais locaux, recettes traditionnelles revisitées","f3t":"Idéal pour les familles","f3d":"Espace de jeux, ambiance calme et salle de prière","f4t":"Parking gratuit","f4d":"Stationnement gratuit pour tous nos visiteurs","f5t":"Prix abordables","f5d":"Haute qualité à prix raisonnables pour tous","f6t":"Salle de prière + Sanitaires","f6d":"Installations propres disponibles pour tous",
+"ab.badge":"Notre histoire","ab.title":"Une oasis au cœur de Salé","ab.p1":"Le restaurant Azafran est situé Route de l'Oulja à Salé, intégré dans les jardins de l'École de Jardinage de Bouregreg — un espace vert unique de plus de 8 hectares.","ab.p2":"Cuisine marocaine authentique à base de produits frais locaux, préparée par le Chef Youssef dans une ambiance alliant nature et élégance.","ab.p3":"Idéal pour les familles, couples, amis — à des prix accessibles à tous.","ab.s1":"hectares de nature","ab.s2":"Note Facebook",
+"mn.eyebrow":"Carte des plats","mn.title":"Notre Menu","mn.all":"Tout","mn.breakfast":"Petit-déjeuner","mn.starter":"Entrées","mn.main":"Plats principaux","mn.tagine":"Tajines","mn.dessert":"Desserts","mn.drinks":"Boissons",
+"mi.pop":"Le plus demandé",
+"mi.b1n":"Petit-déjeuner marocain complet","mi.b1d":"Pain, msemen, œufs, olives, beurre, miel, fromages, café ou thé","mi.b2n":"Œufs à la kefta","mi.b2d":"Œufs frits avec kefta locale aux épices marocaines","mi.b3n":"Thé à la menthe","mi.b3d":"Thé marocain authentique à la menthe fraîche",
+"mi.s1n":"Salade Azafran","mi.s1d":"Légumes frais de saison à la vinaigrette safran-citron","mi.s2n":"Briouates fromage-épinards","mi.s2d":"Feuille de pastilla farcie au fromage et épinards","mi.s3n":"Harira marocaine","mi.s3d":"Soupe traditionnelle aux tomates, lentilles et coriandre",
+"mi.m1n":"Couscous du vendredi","mi.m1d":"Couscous aux légumes et viande ou poulet, recette de grand-mère","mi.m2n":"Poulet rôti aux herbes","mi.m2d":"Poulet fermier au thym, citron et huile d'olive","mi.m3n":"Poisson à la marocaine","mi.m3d":"Poisson frais à la chermoula et légumes de saison",
+"mi.t1n":"Tajine d'agneau aux pruneaux","mi.t1d":"Agneau tendre avec pruneaux, amandes et cannelle","mi.t2n":"Tajine poulet olives citron","mi.t2d":"Poulet fermier avec olives, citron confit et safran","mi.t3n":"Tajine de légumes","mi.t3d":"Légumes frais de saison aux épices marocaines",
+"mi.d1n":"Corne de gazelle","mi.d1d":"Pâtisserie traditionnelle aux amandes, cannelle et eau de rose","mi.d2n":"Sellou","mi.d2d":"Sellou traditionnel au sésame, amandes et miel",
+"mi.dr1n":"Jus frais","mi.dr1d":"Orange, carotte, fraise ou cocktail de fruits de saison","mi.dr2n":"Café & Cappuccino","mi.dr2d":"Espresso, café noir, café au lait ou cappuccino",
+"gl.eyebrow":"Galerie photos","gl.title":"Moments Azafran",
+"ev.eyebrow":"Vos occasions spéciales","ev.title":"Chaque événement mérite Azafran","ev.cta":"Réserver pour votre événement","ev.b.t":"Anniversaire","ev.b.d":"Célébrez votre anniversaire dans un cadre naturel enchanteur. Nous préparons surprises et décoration pour un jour inoubliable.","ev.p.t":"Demande en mariage","ev.p.d":"Choisissez le plus beau moment de votre vie dans l'oasis d'Azafran. Ambiance romantique idéale garantie.","ev.m.t":"Réunion d'affaires","ev.m.d":"Espace calme loin du bruit, idéal pour les réunions et discussions dans une atmosphère inspirante.","ev.f.t":"Réunion familiale","ev.f.d":"Espace de jeux pour enfants, grand espace adultes — le weekend parfait en famille.","ev.fr.t":"Retrouvailles entre amis","ev.fr.d":"Un repas partagé, des rires et de beaux souvenirs dans un cadre incomparable.","ev.o.t":"Autres occasions","ev.o.d":"Fiançailles, mariage, remise de diplôme — Azafran crée l'ambiance parfaite pour vous.",
+"ch.eyebrow":"Dans les coulisses","ch.name":"Chef Youssef","ch.role":"Chef & Gérant — Azafran","ch.bio1":"Le Chef Youssef n'est pas seulement cuisinier — il est le pionnier d'un projet alliant cuisine authentique et responsabilité sociale au sein de l'École de Jardinage de Bouregreg.","ch.bio2":"Philosophie simple : produits frais de saison, recettes traditionnelles revisitées, et prix accessibles à tous.",
+"rv.eyebrow":"Ce que disent nos visiteurs","rv.title":"Avis & Témoignages","rv.cta":"Laisser un avis sur Google","rv.r1":"Endroit magnifique et paisible, la nourriture est délicieuse et l'ambiance naturelle rend l'expérience unique.","rv.r2":"Brunch de weekend dans une oasis près de Rabat. Parfait pour les familles, les enfants ont adoré !","rv.r3":"Un endroit magnifique avec une cuisine marocaine authentique. Service attentionné, prix très raisonnables.",
+"rs.eyebrow":"Réservez votre table","rs.title":"Réservation","rs.h":"Venez vivre l'expérience Azafran","rs.p":"Réservez votre table ou espace pour votre occasion. Nous faisons de votre moment quelque chose d'exceptionnel.","rs.h1":"Horaires","rs.h1v":"Tous les jours : 8h00 — 18h00","rs.h2":"Adresse","rs.h2v":"Route de l'Oulja, Salé — École de Jardinage de Bouregreg","rs.h3":"Parking","rs.h3v":"Stationnement gratuit disponible","rs.h4":"Salle de prière","rs.h4v":"Installations propres pour tous",
+"fm.name":"Nom complet","fm.phone":"Téléphone","fm.date":"Date","fm.time":"Heure","fm.guests":"Nombre de personnes","fm.occ":"Type d'occasion","fm.notes":"Notes spéciales","fm.o1":"Normal","fm.o2":"Anniversaire","fm.o3":"Demande en mariage","fm.o4":"Réunion","fm.o5":"Réunion familiale","fm.o6":"Autre","fm.submit":"Confirmer la réservation","fm.ok":"Réservation reçue ! Nous vous contacterons bientôt pour confirmer.",
+"lc.eyebrow":"Comment nous trouver","lc.title":"Localisation","lc.h":"Trouvez-nous à Salé","lc.l1":"Adresse","lc.l2":"Horaires","lc.l2v":"Tous les jours : 8h00 — 18h00","lc.l3":"Accès","lc.l3v":"Parking gratuit — Accessible depuis Rabat et Salé","lc.gmaps":"Ouvrir dans Google Maps",
+"ft.desc":"Une oasis paisible sur les rives du Bouregreg — cuisine marocaine authentique à Salé, Maroc.","ft.nav":"Navigation","ft.srv":"Nos services","ft.links":"Liens","ft.s1":"Réservation","ft.s2":"Événements","ft.s3":"Avis","ft.s4":"Localisation","ft.copy":"© 2025 Azafran Café Restaurant — Salé, Maroc. Tous droits réservés."
+},
+es:{
+"nav.about":"Nosotros","nav.menu":"Carta","nav.gallery":"Galería","nav.events":"Eventos","nav.chef":"El Chef","nav.reviews":"Reseñas","nav.location":"Ubicación","nav.reserve":"Reservar",
+"hero.badge":"Salé, Marruecos","hero.sub":"Un oasis tranquilo a orillas del Bouregreg — cocina auténtica y ambiente inolvidable","hero.cta1":"Reservar mesa","hero.cta2":"Ver la carta","hero.scroll":"Descubrir",
+"f1t":"Naturaleza verde","f1d":"8 hectáreas de espacios verdes a orillas del Bouregreg","f2t":"Cocina marroquí auténtica","f2d":"Productos frescos locales, recetas tradicionales con toque creativo","f3t":"Ideal para familias","f3d":"Zona de juegos, ambiente tranquilo y sala de oración","f4t":"Parking gratuito","f4d":"Aparcamiento cómodo y gratuito para todos","f5t":"Precios accesibles","f5d":"Alta calidad a precios razonables para todos","f6t":"Sala de oración + Aseos","f6d":"Instalaciones limpias disponibles para todos",
+"ab.badge":"Nuestra historia","ab.title":"Un oasis en el corazón de Salé","ab.p1":"El restaurante Azafran está en la Route de l'Oulja en Salé, integrado en los jardines de la Escuela de Jardinería de Bouregreg — un espacio verde único de más de 8 hectáreas.","ab.p2":"Cocina marroquí auténtica con productos frescos de temporada, preparada por el Chef Youssef en un ambiente que combina naturaleza y elegancia.","ab.p3":"Ideal para familias, parejas, amigos — con precios accesibles para todos.","ab.s1":"hectáreas de naturaleza","ab.s2":"Valoración Facebook",
+"mn.eyebrow":"Carta de platos","mn.title":"Nuestra Carta","mn.all":"Todo","mn.breakfast":"Desayuno","mn.starter":"Entrantes","mn.main":"Platos principales","mn.tagine":"Tajines","mn.dessert":"Postres","mn.drinks":"Bebidas",
+"mi.pop":"El más pedido",
+"mi.b1n":"Desayuno marroquí completo","mi.b1d":"Pan, msemen, huevos, aceitunas, mantequilla, miel, quesos, café o té","mi.b2n":"Huevos con kefta","mi.b2d":"Huevos fritos con kefta local y especias marroquíes","mi.b3n":"Té con menta","mi.b3d":"Té marroquí auténtico con menta fresca",
+"mi.s1n":"Ensalada Azafran","mi.s1d":"Verduras frescas de temporada con vinagreta de azafrán y limón","mi.s2n":"Briouates queso y espinacas","mi.s2d":"Hoja de pastilla rellena de queso y espinacas frescas","mi.s3n":"Harira marroquí","mi.s3d":"Sopa tradicional con tomates, lentejas y cilantro",
+"mi.m1n":"Cuscús del viernes","mi.m1d":"Cuscús con verduras y carne o pollo, receta de la abuela","mi.m2n":"Pollo asado con hierbas","mi.m2d":"Pollo de campo asado con tomillo, limón y aceite de oliva","mi.m3n":"Pescado a la marroquí","mi.m3d":"Pescado fresco con chermoula y verduras de temporada",
+"mi.t1n":"Tajín de cordero con ciruelas","mi.t1d":"Cordero tierno con ciruelas, almendras y canela","mi.t2n":"Tajín pollo aceitunas limón","mi.t2d":"Pollo de campo con aceitunas, limón en conserva y azafrán","mi.t3n":"Tajín de verduras","mi.t3d":"Verduras de temporada con especias marroquíes auténticas",
+"mi.d1n":"Cuerno de gacela","mi.d1d":"Pastelería tradicional con almendras, canela y agua de rosas","mi.d2n":"Sellou","mi.d2d":"Sellou tradicional con sésamo, almendras y miel",
+"mi.dr1n":"Zumo natural","mi.dr1d":"Naranja, zanahoria, fresa o cóctel de frutas de temporada","mi.dr2n":"Café & Cappuccino","mi.dr2d":"Espresso, café negro, café con leche o cappuccino",
+"gl.eyebrow":"Galería de fotos","gl.title":"Momentos Azafran",
+"ev.eyebrow":"Sus ocasiones especiales","ev.title":"Cada evento merece Azafran","ev.cta":"Reservar para su evento","ev.b.t":"Cumpleaños","ev.b.d":"Celebra tu cumpleaños en un entorno natural encantador. Preparamos sorpresas y decoración para un día inolvidable.","ev.p.t":"Pedida de mano","ev.p.d":"Elige el momento más hermoso de tu vida en el oasis de Azafran. El ambiente romántico perfecto garantizado.","ev.m.t":"Reunión de negocios","ev.m.d":"Espacio tranquilo ideal para reuniones importantes en una atmósfera inspiradora.","ev.f.t":"Reunión familiar","ev.f.d":"Zona de juegos, amplio espacio adultos — el fin de semana perfecto en familia.","ev.fr.t":"Encuentro de amigos","ev.fr.d":"Una comida compartida, risas y recuerdos hermosos en un entorno incomparable.","ev.o.t":"Otras ocasiones","ev.o.d":"Compromiso, boda, graduación — Azafran crea el ambiente perfecto para ti.",
+"ch.eyebrow":"Entre bastidores","ch.name":"Chef Youssef","ch.role":"Chef & Gérant — Azafran","ch.bio1":"El Chef Youssef no es solo cocinero — es el pionero de un proyecto que une cocina auténtica y responsabilidad social en la Escuela de Jardinería de Bouregreg.","ch.bio2":"Filosofía simple: productos frescos de temporada, recetas marroquíes revisitadas y precios accesibles para todos.",
+"rv.eyebrow":"Lo que dicen nuestros visitantes","rv.title":"Reseñas","rv.cta":"Dejar una reseña en Google","rv.r1":"Un lugar maravilloso y tranquilo, la comida es deliciosa y el ambiente natural hace la experiencia única.","rv.r2":"Brunch de fin de semana en un oasis cerca de Rabat. Perfecto para familias, los niños adoraron la zona de juegos.","rv.r3":"Un lugar magnífico con cocina marroquí auténtica. Servicio atento y precios muy razonables.",
+"rs.eyebrow":"Reserve su mesa","rs.title":"Reservas","rs.h":"Venga a vivir la experiencia Azafran","rs.p":"Reserve su mesa o espacio para su ocasión. Hacemos de su momento algo excepcional en el corazón de la naturaleza.","rs.h1":"Horario","rs.h1v":"Todos los días: 8:00 — 18:00","rs.h2":"Dirección","rs.h2v":"Route de l'Oulja, Salé — Escuela de Jardinería de Bouregreg","rs.h3":"Parking","rs.h3v":"Parking gratuito disponible","rs.h4":"Sala de oración","rs.h4v":"Instalaciones limpias para todos",
+"fm.name":"Nombre completo","fm.phone":"Teléfono","fm.date":"Fecha","fm.time":"Hora","fm.guests":"Número de personas","fm.occ":"Tipo de ocasión","fm.notes":"Notas especiales","fm.o1":"Normal","fm.o2":"Cumpleaños","fm.o3":"Pedida de mano","fm.o4":"Reunión","fm.o5":"Reunión familiar","fm.o6":"Otro","fm.submit":"Confirmar reserva","fm.ok":"¡Reserva recibida! Nos pondremos en contacto pronto para confirmar.",
+"lc.eyebrow":"Cómo encontrarnos","lc.title":"Ubicación","lc.h":"Encuéntranos en Salé","lc.l1":"Dirección","lc.l2":"Horario","lc.l2v":"Todos los días: 8:00 — 18:00","lc.l3":"Acceso","lc.l3v":"Parking gratuito — Fácil acceso desde Rabat y Salé","lc.gmaps":"Abrir en Google Maps",
+"ft.desc":"Un oasis tranquilo a orillas del Bouregreg — cocina marroquí auténtica en Salé, Marruecos.","ft.nav":"Navegación","ft.srv":"Nuestros servicios","ft.links":"Enlaces","ft.s1":"Reservas","ft.s2":"Eventos","ft.s3":"Reseñas","ft.s4":"Ubicación","ft.copy":"© 2025 Azafran Café Restaurant — Salé, Marruecos. Todos los derechos reservados."
+},
+en:{
+"nav.about":"About","nav.menu":"Menu","nav.gallery":"Gallery","nav.events":"Events","nav.chef":"The Chef","nav.reviews":"Reviews","nav.location":"Location","nav.reserve":"Book a Table",
+"hero.badge":"Salé, Morocco","hero.sub":"A peaceful oasis on the banks of the Bouregreg — authentic cuisine and unforgettable atmosphere","hero.cta1":"Book Your Table","hero.cta2":"Explore the Menu","hero.scroll":"Discover",
+"f1t":"Green Nature","f1d":"8 hectares of peaceful green spaces on the Bouregreg riverbanks","f2t":"Authentic Moroccan Cuisine","f2d":"Fresh local produce, traditional recipes with a creative touch","f3t":"Family Friendly","f3d":"Children's play area, calm atmosphere and prayer room for all","f4t":"Free Parking","f4d":"Comfortable free parking for all our guests","f5t":"Affordable Prices","f5d":"High quality at reasonable prices — an exceptional experience for all","f6t":"Prayer Room + Restrooms","f6d":"Clean, well-equipped facilities available for all",
+"ab.badge":"Our Story","ab.title":"A Peaceful Oasis in the Heart of Salé","ab.p1":"Azafran restaurant is on Route de l'Oulja in Salé, nestled within the Bouregreg Gardening School gardens — a unique green space of over 8 hectares on the Bouregreg riverbanks.","ab.p2":"We offer authentic Moroccan cuisine with fresh local seasonal produce, prepared by Chef Youssef's team in a warm atmosphere blending nature and elegance.","ab.p3":"Perfect for families, couples, friends — keeping prices accessible to everyone.","ab.s1":"hectares of nature","ab.s2":"Facebook rating",
+"mn.eyebrow":"Our dishes","mn.title":"The Menu","mn.all":"All","mn.breakfast":"Breakfast","mn.starter":"Starters","mn.main":"Main Courses","mn.tagine":"Tagines","mn.dessert":"Desserts","mn.drinks":"Drinks",
+"mi.pop":"Most popular",
+"mi.b1n":"Full Moroccan Breakfast","mi.b1d":"Bread, msemen, eggs, olives, butter, honey, cheeses, coffee or tea","mi.b2n":"Eggs with Kefta","mi.b2d":"Fried eggs with local kefta and Moroccan spices","mi.b3n":"Mint Tea","mi.b3d":"Authentic Moroccan tea with fresh mint",
+"mi.s1n":"Azafran Salad","mi.s1d":"Fresh seasonal vegetables with saffron-lemon dressing","mi.s2n":"Cheese & Spinach Briouats","mi.s2d":"Pastilla leaf filled with cheese and fresh spinach","mi.s3n":"Moroccan Harira","mi.s3d":"Traditional soup with tomatoes, lentils and coriander",
+"mi.m1n":"Friday Couscous","mi.m1d":"Couscous with vegetables and meat or chicken, grandmother's recipe","mi.m2n":"Herb-roasted Chicken","mi.m2d":"Free-range chicken with thyme, lemon juice and olive oil","mi.m3n":"Fish Moroccan Style","mi.m3d":"Fresh fish with chermoula and seasonal vegetables",
+"mi.t1n":"Lamb Tagine with Prunes","mi.t1d":"Tender lamb with prunes, almonds and cinnamon","mi.t2n":"Chicken Tagine with Olives","mi.t2d":"Free-range chicken with olives, preserved lemon and saffron","mi.t3n":"Vegetable Tagine","mi.t3d":"Fresh seasonal vegetables with authentic Moroccan spices",
+"mi.d1n":"Gazelle Horns","mi.d1d":"Traditional Moroccan pastry with almonds, cinnamon and rose water","mi.d2n":"Sellou","mi.d2d":"Traditional Moroccan sellou with sesame, almonds and honey",
+"mi.dr1n":"Fresh Juice","mi.dr1d":"Orange, carrot, strawberry or seasonal fruit cocktail","mi.dr2n":"Coffee & Cappuccino","mi.dr2d":"Espresso, black coffee, café au lait or cappuccino",
+"gl.eyebrow":"Photo gallery","gl.title":"Azafran Moments",
+"ev.eyebrow":"Your special occasions","ev.title":"Every event deserves Azafran","ev.cta":"Book for your event","ev.b.t":"Birthday","ev.b.d":"Celebrate your birthday in an enchanting natural setting. We arrange surprises and decoration for an unforgettable day.","ev.p.t":"Marriage Proposal","ev.p.d":"Choose the most beautiful moment of your life at the Azafran oasis. Perfect romantic atmosphere guaranteed.","ev.m.t":"Business Meeting","ev.m.d":"A quiet space away from noise, ideal for important meetings in an inspiring atmosphere.","ev.f.t":"Family Gathering","ev.f.d":"Children's play area, large adult space — the perfect family weekend.","ev.fr.t":"Friends Reunion","ev.fr.d":"A shared meal, laughter and beautiful memories in an incomparable natural setting.","ev.o.t":"Other Occasions","ev.o.d":"Engagement, wedding, graduation — Azafran creates the perfect atmosphere for you.",
+"ch.eyebrow":"Behind the scenes","ch.name":"Chef Youssef","ch.role":"Chef & Manager — Azafran","ch.bio1":"Chef Youssef is not just a cook — he is the pioneer of an exceptional project combining authentic cuisine and social responsibility at the Bouregreg Gardening School.","ch.bio2":"Simple philosophy: fresh seasonal produce, traditional Moroccan recipes with a creative twist, and prices accessible to all.",
+"rv.eyebrow":"What our visitors say","rv.title":"Reviews","rv.cta":"Leave a review on Google","rv.r1":"A wonderful and peaceful place, the food is delicious and the natural atmosphere makes the experience unique. Chef Youssef and his team welcome you like family.","rv.r2":"Weekend brunch in an oasis close to Rabat. Perfect for families, the kids loved the play area and the peaceful green setting. Highly recommended!","rv.r3":"A magnificent place with authentic Moroccan cuisine. Attentive service and very reasonable prices.",
+"rs.eyebrow":"Book your table","rs.title":"Reservation","rs.h":"Come enjoy the Azafran experience","rs.p":"Book your table or space for your special occasion. We make your moment exceptional in the heart of nature.","rs.h1":"Opening Hours","rs.h1v":"Every day: 8:00 AM — 6:00 PM","rs.h2":"Address","rs.h2v":"Route de l'Oulja, Salé — Bouregreg Gardening School","rs.h3":"Parking","rs.h3v":"Free parking available","rs.h4":"Prayer Room","rs.h4v":"Clean facilities available for all",
+"fm.name":"Full name","fm.phone":"Phone number","fm.date":"Date","fm.time":"Time","fm.guests":"Number of guests","fm.occ":"Occasion type","fm.notes":"Special notes","fm.o1":"Normal","fm.o2":"Birthday","fm.o3":"Marriage proposal","fm.o4":"Business meeting","fm.o5":"Family gathering","fm.o6":"Other","fm.submit":"Confirm Reservation","fm.ok":"Reservation received! We will contact you soon to confirm.",
+"lc.eyebrow":"How to find us","lc.title":"Our Location","lc.h":"Find us in Salé","lc.l1":"Address","lc.l2":"Opening Hours","lc.l2v":"Every day: 8:00 AM — 6:00 PM","lc.l3":"Access","lc.l3v":"Free parking — Easily accessible from Rabat and Salé","lc.gmaps":"Open in Google Maps",
+"ft.desc":"A peaceful oasis on the banks of the Bouregreg — authentic Moroccan cuisine in Salé, Morocco.","ft.nav":"Navigation","ft.srv":"Our services","ft.links":"Links","ft.s1":"Reservation","ft.s2":"Events","ft.s3":"Reviews","ft.s4":"Location","ft.copy":"© 2025 Azafran Café Restaurant — Salé, Morocco. All rights reserved."
+}
+};
 
-    <script>
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // قراءة البيانات من الفورم
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const guests = document.getElementById('guests').value;
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
+let lang='ar';
+function setLang(l){
+  lang=l;
+  const html=document.documentElement;
+  html.setAttribute('lang',l);
+  html.setAttribute('dir',l==='ar'?'rtl':'ltr');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(T[l]&&T[l][k])el.textContent=T[l][k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
+}
 
-            // هنا تقدر تربط مع الـ API ديال الواتساب أو الشات بوت اللي صايبتي
-            alert(`شكراً ليك يا ${name}! تم تسجيل طلب الحجز لـ ${guests} أفراد يوم ${date} مع الساعة ${time}. غنتواصلو معاك فـ ${phone} دابا.`);
-            
-            // تنظيف الفورم
-            this.reset();
-        });
-    </script>
+function filterMenu(cat,btn){
+  document.querySelectorAll('.menu-item').forEach(i=>{i.style.display=(cat==='all'||i.dataset.cat===cat)?'flex':'none'});
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+}
+
+function openLB(el){document.getElementById('lbImg').src=el.querySelector('img').src;document.getElementById('lightbox').classList.add('open')}
+function closeLB(){document.getElementById('lightbox').classList.remove('open')}
+
+function submitRes(){
+  if(!document.getElementById('rName').value.trim()){alert(lang==='ar'?'رجاءً أدخل اسمك':'Please enter your name');return}
+  document.getElementById('resFormWrap').style.display='none';
+  document.getElementById('resSuccess').style.display='block';
+}
+
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>60));
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open')}
+
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+document.getElementById('rDate').min=new Date().toISOString().split('T')[0];
+</script>
 </body>
 </html>
