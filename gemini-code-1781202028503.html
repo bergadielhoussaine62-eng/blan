@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مطعم زعفران | تجربة عشاء فاخرة</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-amber-600 tracking-wide">ZAFARAN <span class="text-gray-900">زعفران</span></div>
+            <nav class="hidden md:flex space-x-reverse space-x-6 font-medium">
+                <a href="#home" class="text-amber-600 hover:text-amber-700">الرئيسية</a>
+                <a href="#about" class="text-gray-600 hover:text-amber-600 transition">من نحن</a>
+                <a href="#menu" class="text-gray-600 hover:text-amber-600 transition">الأطباق</a>
+                <a href="#book" class="bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition shadow-md">احجز طاولتك</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="relative bg-gray-900 text-white py-24 lg:py-32 overflow-hidden">
+        <div class="absolute inset-0 opacity-40 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center max-w-3xl">
+            <span class="text-amber-400 font-semibold uppercase tracking-wider block mb-3">مرحباً بكم في مطعم زعفران</span>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">تذوق أصالة الطبخ بلمسة عصرية</h1>
+            <p class="text-xl text-gray-300 mb-8">نأخذكم في رحلة ساحرة عبر النكهات الأصيلة والمكونات الطازجة المختارة بعناية فائقة.</p>
+            <a href="#book" class="inline-block bg-amber-500 text-gray-900 font-bold px-8 py-3 rounded-xl hover:bg-amber-400 transition transform hover:-translate-y-1 shadow-lg">احجز طاولتك الآن</a>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-amber-600 font-semibold block mb-2">قصتنا</span>
+                <h2 class="text-3xl font-bold mb-6 text-gray-950">لماذا مطعم زعفران؟</h2>
+                <p class="text-gray-600 mb-4 leading-relaxed">في زعفران، لا نقدم فقط الطعام، بل نصنع تجارب ولحظات لا تُنسى. كل طبق يتم تحضيره بشغف كبير من طرف أمهر الطهاة، معتمدين على توابل الزعفران الحر والمكونات المحلية الطازجة.</p>
+                <p class="text-gray-600 leading-relaxed">نحرص على توفير أجواء مريحة وراقية تناسب اللقاءات العائلية واجتماعات العمل.</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Dish 1" class="rounded-xl shadow-md transform translate-y-4">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=400&q=80" alt="Restaurant Interior" class="rounded-xl shadow-md">
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6 text-center max-w-3xl mb-12">
+            <span class="text-amber-600 font-semibold block mb-2">قائمتنا المميزة</span>
+            <h2 class="text-3xl font-bold text-gray-950">أطباق نوصي بها</h2>
+        </div>
+        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80" alt="Plate 1" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">طاجين زعفران الخاص</h3>
+                    <p class="text-gray-600 text-sm mb-4">لحم محمر ببطء مع البرقوق واللوز المنسم بالزعفران الحر.</p>
+                    <span class="text-amber-600 font-bold text-lg">120 درهم</span>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80" alt="Plate 2" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">باستا ثمار البحر بالزعفران</h3>
+                    <p class="text-gray-600 text-sm mb-4">باستا طازجة مع فواكه البحر بصلصة الزعفران الكريمة الفاخرة.</p>
+                    <span class="text-amber-600 font-bold text-lg">95 درهم</span>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80" alt="Plate 3" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">سلطة الملكية المقرمشة</h3>
+                    <p class="text-gray-600 text-sm mb-4">مزيج من الخضار العضوية مع صلصة خاصة من ابتكار الشيف.</p>
+                    <span class="text-amber-600 font-bold text-lg">65 درهم</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="book" class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-2xl bg-gray-50 p-8 md:p-12 rounded-3xl shadow-lg border border-gray-100">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-950 mb-2">احجز طاولتك الآن</h2>
+                <p class="text-gray-600">املأ الاستمارة وسنقوم بتأكيد حجزك فوراً عبر الواتساب أو الهاتف</p>
+            </div>
+            
+            <form id="bookingForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">الاسم الكامل</label>
+                    <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="محمد العلمي">
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">رقم الهاتف (واتساب)</label>
+                        <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:outline-none text-left" placeholder="0612345678">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">عدد الأفراد</label>
+                        <select id="guests" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white">
+                            <option value="2">فردين</option>
+                            <option value="3">3 أفراد</option>
+                            <option value="4">4 أفراد</option>
+                            <option value="5+">عائلة (أكثر من 5)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">التاريخ</label>
+                        <input type="date" id="date" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">التوقيت</label>
+                        <input type="time" id="time" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-amber-500 text-white font-bold py-4 rounded-xl hover:bg-amber-600 transition shadow-md text-lg">تأكيد الحجز أوتوماتيكياً</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center border-t border-gray-900">
+        <p class="text-sm">&copy; 2026 مطعم زعفران. جميع الحقوق محفوظة. تم التطوير بكل شغف.</p>
+    </footer>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // قراءة البيانات من الفورم
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const guests = document.getElementById('guests').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            // هنا تقدر تربط مع الـ API ديال الواتساب أو الشات بوت اللي صايبتي
+            alert(`شكراً ليك يا ${name}! تم تسجيل طلب الحجز لـ ${guests} أفراد يوم ${date} مع الساعة ${time}. غنتواصلو معاك فـ ${phone} دابا.`);
+            
+            // تنظيف الفورم
+            this.reset();
+        });
+    </script>
+</body>
+</html>
